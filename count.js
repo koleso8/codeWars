@@ -7,6 +7,8 @@ const students = [
   { name: 'stas', age: 18 },
 ];
 
+// console.log(fruits.find(el => el === 'kiwi'));
+
 function counItem(array) {
   const count = {};
 
@@ -66,3 +68,38 @@ function likedPizzas(arr) {
   return console.log(res);
 }
 // likedPizzas(friends);
+
+const myStr = 'pizza';
+
+function revers(str) {
+  const res = str.split('').reverse().join('');
+
+  return console.log(res);
+}
+
+// revers(myStr);
+function revers2(str) {
+  const res = [];
+  for (let i = str.length - 1; i >= 0; i--) {
+    res.push(str[i]);
+  }
+
+  return console.log(res.join(''));
+}
+// revers2(myStr);
+
+function logPerson() {
+  console.log(`Person:${this.name},${this.age},${this.job}`);
+}
+
+const person1 = { name: 'Misha', age: 22, job: 'Developer' };
+const person2 = { name: 'Liza', age: 21, job: 'SMM' };
+
+bind(person1, logPerson)();
+bind(person2, logPerson)();
+
+function bind(pers, log) {
+  return function res(...args) {
+    log.apply(pers, args);
+  };
+}
